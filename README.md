@@ -2,11 +2,11 @@
 Proyecto final de la materia Introducción a la Ciencia de Datos.  
 Universidad de Sonora, Maestría en Ciencia de Datos.
 
-## Equipo (porfa pongan sus apellidos)
-* Misael
-* Jose Carlos
-* Axel
-* Guillermo Velazquez
+### Integrantes del equipo
+* Misael Gonzáles Soria
+* José Carlos Barreras Maldonado
+* Axel Castro Fonseca
+* Guillermo Velazquez Coronado
 
 # Proyecto
 - Contar que usaremos K-Fold
