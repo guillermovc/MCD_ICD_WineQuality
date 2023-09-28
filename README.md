@@ -52,6 +52,24 @@ La relevancia de este proyecto en el contexto de Portugal se manifiesta en su po
 </p>
 
 ### Comprensión de los datos
+
+Los conjuntos de datos se relacionan con las variantes de vino "Vinho Verde" de Portugal, incluyendo tanto vinos tintos como blancos. Estos datos conforman un total de 4898 instancias u observaciones y 11 carácterísticas. Debido a cuestiones de privacidad y logística, solo se proporcionan variables físico-químicas (entradas) y una variable de calidad (la salida), sin información sobre tipos de uva, marca de vino, precio de venta, etc. Las clases están ordenadas y no están equilibradas; hay muchas más muestras de vinos de calidad media que de muy alta o muy baja calidad. Se pueden utilizar algoritmos de detección de valores atípicos para identificar los pocos vinos excelentes o pobres. También, no se sabe si todas las variables de entrada son relevantes, por lo que podría ser interesante probar métodos de selección de características. No hay valores faltantes en los datos.
+
+| Variable                | Rol            | Tipo      | Descripción                                                            | Valores Faltantes |
+|-------------------------|-----------------|-----------|------------------------------------------------------------------------|-------------------|
+| fixed_acidity           | Característica | Continua  | Ácidos orgánicos de baja volatilidad inherentes a la muestra.          | No                |
+| volatile_acidity        | Característica | Continua  | Ácidos orgánicos de cadena corta, especialmente ácido acético.         | No                |
+| citric_acid             | Característica | Continua  | Ácido cítrico usado como suplemento ácido en la fermentación.          | No                |
+| residual_sugar          | Característica | Continua  | Azúcares naturales que quedan en el vino después de la fermentación.   | No                |
+| chlorides               | Característica | Continua  | Sales con cloro que contribuyen al sabor, añadiendo un toque salado.   | No                |
+| free_sulfur_dioxide     | Característica | Continua  | Dióxido de azufre que no está unido químicamente a otras sustancias.   | No                |
+| total_sulfur_dioxide    | Característica | Continua  | Total de dióxido de azufre, incluyendo el unido a otras sustancias.     | No                |
+| density                 | Característica | Continua  | Masa por unidad de volumen de vino o mosto a temperatura fija.           | No                |
+| pH                      | Característica | Continua  | Medida de acidez o alcalinidad de una solución.                          | No                |
+| sulphates               | Característica | Continua  | Sulfitos o dióxido de azufre como conservante añadido en el vino.       | No                |
+| alcohol                 | Característica | Continua  | Porcentaje de alcohol en el vino.                                        | No                |
+| quality                 | Objetivo        | Entero    | Puntuación de calidad del vino, promedio de evaluaciones sensoriales en una escala de 0 a 10. | No                |
+
 #### 1.1 Recolección de los datos
 Los datos usados en este proyecto se obtuvieron del siguiente  [enlace](https://archive.ics.uci.edu/dataset/186/wine+quality) y están guardados en el archivo *wine-quality.zip*.
 
