@@ -1,6 +1,8 @@
 # Clasificación de la calidad del vino mediante aprendizaje automático con base en características fisicoquímicas
-Proyecto final de la materia Introducción a la Ciencia de Datos.  
-Universidad de Sonora, Maestría en Ciencia de Datos.
+
+Este proyecto forma parte de la materia Introducción a la Metodología de Ciencia de Datos de la Maestría en Ciencia de Datos. El objetivo del mismo es emplear la metodología CRISP-DM en el abordaje de una problemática particular. Se utilizará una base de datos con los valores de múltiples propiedades fisicoquímicas de distintos vinos, junto con su clasificación en términos de calidad. A partir de estos datos, siguiendo las pautas marcadas en CRISP-DM, se entrenará y validará un modelo para predecir la calidad de un vino con base en sus características. 
+
+### Comprensión del negocio 
 
 ### Integrantes del equipo
 * Misael Gonzáles Soria
