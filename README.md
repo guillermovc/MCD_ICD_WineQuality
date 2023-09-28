@@ -52,6 +52,48 @@ La relevancia de este proyecto en el contexto de Portugal se manifiesta en su po
 </p>
 
 ### Comprensión de los datos
+#### 1.1 Recolección de los datos
+Los datos usados en este proyecto se obtuvieron del siguiente  [enlace](https://archive.ics.uci.edu/dataset/186/wine+quality) y están guardados en el archivo *wine-quality.zip*.
+
+Acorde al trabajo de investigación [Modeling wine preferences by data mining
+from physicochemical properties](http://www3.dsi.uminho.pt/pcortez/wine5.pdf), estos datos consideran *vinho verde*, el cual es un producto de la region Minho de portugal. Este vino representa el 15% de toda la producción de Portugal y cerca del 10% es exportado, en su mayoria vino blanco.
+
+Los datos fueron recolectados de mayo del 2004 a febrero del 2006 y fueron capturados por un sistema computarizado (iLab), el cual  gestiona automáticamente el proceso de análisis de muestras de vino desde las solicitudes del productor hasta el análisis sensorial y de laboratorio.
+
+Dado que los sabores rojo y blanco son bastante diferentes, el análisis se realizará
+por separado, por lo que se construyeron dos conjuntos de datos 1 con 1599 ejemplos rojos y 4898 blancos.
+
+Cada muestra fue evaluada por un mínimo de tres evaluadores sensoriales y fueron realizadas a ciegas para no cesgar la evaluación, de esta manera se calificaron cada una de las muestras en una escala del 0 (very bad) al 10 (excellent). La variable *quality* que viene en ambas bases de datos se calculó como el promedio de dichas evaluaciones sensoriales.
+#### 1.2 Descripción de los datos
+
+El archivo *winequality-red.csv* cuenta con 1599 registros de vinos rojos, cada registro tiene 11 mediciones o variables fisoco-quimicas con 0 datos faltantes, además incluye la medición de quality que ya vimos como se caluclo.
+
+Para comprender un poco mas la base de datos veamos una pequeña descripción de cada una de las variables involucradas:
+
+
+0.  **fixed acidity (acidez fija)**: Corresponde al conjunto de ácidos orgánicos de baja volatilidad como el ácido málico, láctico, tartárico o cítrico y es inherente a las características de la muestra.
+
+1.   **volátile acidity (acidez volatil)**: Corresponde al conjunto de ácidos orgánicos de cadena corta que pueden extraerse de la muestra mediante un proceso de destilación: ácido fórmico, ácido acético, ácido propiónico y ácido butírico. De todos ellos, el ácido responsable de aproximadamente el 99% de la acidez volátil corresponde al ácido acético, por lo que muchas veces su determinación es suficiente para determinar de forma fiable la acidez volátil total.
+
+2.  **citric acid (ácido cítrico)**: El ácido cítrico se usa más comúnmente como suplemento ácido durante el proceso de fermentación para ayudar a los enólogos a aumentar la acidez de su vino, especialmente de las uvas cultivadas en climas más cálidos. También se puede utilizar como estabilizador para prevenir neblinas férricas.
+
+3.  **residual sugar (azúcar residual)**: Proviene de los azúcares naturales de la uva que quedan en el vino una vez finalizada la fermentación alcohólica. Cuanto más azúcar residual quede en un vino, más dulce será. Ciertamente no se debe a la adición de azúcar.
+
+4.  **Chlorides (Cloruros)**: Este aumenta el sabor salado de un vino, lo que puede contribuir o restar valor al sabor y la calidad generales del vino.
+
+5. **free sulfur dioxide (dióxido de azufre libre)**: Son los iones de dióxido de azufre que no están unidos químicamente a otras sustancias químicas en solución y, por lo tanto, pueden reaccionar libremente con otras sustancias. Medir los sulfitos en el vino es importante ya que demasiado azufre en el vino puede ser peligroso para la salud si se bebe en exceso.
+
+6. **total sulfur dioxide (dióxido de azufre total)**: Es la porción de SO2 que está libre en el vino más la porción que está unida a otras sustancias químicas del vino, como aldehídos, pigmentos o azúcares.
+
+7. **Density (densidad)**: La densidad es la masa por unidad de volumen de vino o mosto a  temperatura fija, usualmente a 20°C.
+
+8. **pH**: Es una medida para determinar el grado de alcalinidad o acidez de un disolución
+
+9. **Sulphates (sulfatitos)**: Los sulfitos, también conocidos como dióxido de azufre, son naturales y se encuentran en el vino como conservante añadido.
+
+9. **Alcohol**: Porcentaje de alcohol en el vino.
+
+11. **quality (calidad)**: Es el promedio de las calificaciones dadas por al menos 3 probadores de vino, donde cada evaluación fue echa a ciegas y bajo mismas condiciones para evitar cualquier tipo cesgos.
 
 ### Preparación de los datos
 
