@@ -1,4 +1,4 @@
-# Clasificación de vinos
+# Clasificación de la calidad del vino mediante aprendizaje automático con base en características fisicoquímicas
 Proyecto final de la materia Introducción a la Ciencia de Datos.  
 Universidad de Sonora, Maestría en Ciencia de Datos.
 
