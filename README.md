@@ -135,34 +135,59 @@ Este análisis inicial es el punto de partida esencial para la preparación de l
 
 Después de haber realizado un análisis exhaustivo de la situación actual de nuestros datos, avanzamos con la etapa de preparación de los mismos. Esta fase, en el marco de la metodología CRISP-DM, tiene como objetivo garantizar que los datos estén en el formato adecuado y sean apropiados para su análisis posterior. Esto implica, entre otras cosas, la limpieza de datos, la selección de variables relevantes y la transformación de los datos según sea necesario. En esta etapa, generalmente se abordan problemas relacionados con los datos faltantes, pero como se demostró en la etapa anterior, en este caso no es necesario realizar esta tarea. La preparación de los datos sienta las bases esenciales para el modelado de datos y es crucial para obtener resultados precisos y significativos en cualquier proyecto de minería de datos.
 
-Para esta preparación de datos, comenzamos por analizar la matriz de correlación obtenida en la fase anterior. Observamos que algunas variables tienen una correlación bastante débil con la variable objetivo. Establecimos un valor umbral de correlación de |0.1| y eliminamos todas las variables cuya correlación con la variable *quality* no superara este umbral. El resultado es una nueva matriz de correlación, como se muestra a continuación:
+Como primer paso en nuestra fase de preparación de datos, abordamos la desigual distribución de las distintas calidades de vino en nuestro conjunto. Como se evidenció anteriormente, carecemos de observaciones de las calidades más extremas, es decir, 1, 2 y 9, y observamos una escasez de muestras para las calidades 3, 4 y 8. En contraste, la mayoría de las instancias se concentran en las calidades 5, 6 y 7.
+
+Para mitigar esta disparidad y mejorar la capacidad de generalización de nuestro modelo, optamos por crear tres nuevas categorías ordinales: "low" (baja calidad, que engloba las calidades 3 y 4), "med" (calidad media, que incluye las calidades 5 y 6) y "high" (alta calidad, que comprende las calidades 8 y 9). Si bien esta solución implica una disminución en la granularidad de nuestras predicciones al agrupar las calidades en estas tres categorías, contribuye a equilibrar las proporciones entre las distintas calidades en nuestros datos. A su vez, para poder llevar a cabo el entrenamiento del modelo sin problemas, a cada una de las nuevas categorías le asignamos un valor numerico, tal como se muestra en la siguiente tabla: 
+
+| quality | quality_cat | quality_ord |
+|---------|------------|------------|
+| 3       | low        | -1         |
+| 4       | low        | -1         |
+| 5       | med        | 0          |
+| 6       | med        | 0          |
+| 7       | high       | 1          |
+| 8       | high       | 1          |
+
+Una vez hecha esta transformación, volvemos a analizar la frecuencia con la que aparece cada una de las nuevas categorías en nuestros datos:
 
 <p align="center">
-   <img src="https://github.com/guillermovc/MCD_ICD_WineQuality/assets/90294947/5d6abd55-833c-42f7-86de-de5f8f8fccf3" alt="Descripción de la imagen">
+   <img src="https://github.com/guillermovc/MCD_ICD_WineQuality/assets/90294947/3e53134c-7b86-4be5-a95f-6fee30085d09" alt="Descripción de la imagen">
 </p>
 
 <p align="center">
-  <em>Figura 7: Matriz de correlación sin variables pobremente correlacionadas con quality.</em>
+  <em>Figura 7: Frecuencia de cada nueva categoría de calidad de vino.</em>
 </p>
 
-También identificamos que las variables *fixed_acidity*, *citric_acid* y *density* presentan una correlación de 0.67 entre ellas. Dado que están altamente correlacionadas, podemos conservar solo una de estas tres variables sin perder información explicativa en relación con *quality*. Para tomar esta decisión, comparamos la correlación de cada una con la variable objetivo y seleccionamos la que tenga el nivel de correlación más alto. En este caso, la variable *citric_acid* obtuvo el valor más alto, que es 0.23. Por lo tanto, eliminamos las otras dos variables y obtenemos una nueva matriz de correlación, como se muestra a continuación:
+Este enfoque nos permitirá abordar de manera más efectiva el reto de modelar la calidad del vino y ofrecerá una mayor estabilidad en las predicciones al considerar estas categorías amplias en lugar de calidades individuales.
+
+Para continuar con la preparación de datos, calculamos nuevamente la matriz de correlación con nuestras nuevas categorías:
 
 <p align="center">
-   <img src="https://github.com/guillermovc/MCD_ICD_WineQuality/assets/90294947/69520fb9-31be-44cf-afeb-e113c293b113" alt="Descripción de la imagen">
+   <img src="https://github.com/guillermovc/MCD_ICD_WineQuality/assets/90294947/4006789f-eba7-4674-a2e2-b7853c453e3f" alt="Descripción de la imagen">
 </p>
 
 <p align="center">
-  <em>Figura 8: Matriz de correlación sin variables pobremente correlacionadas con quality, ni altamente correlacionadas entre sí.</em>
+  <em>Figura 8: Matriz de correlación con las nuevas categorías de calidad.</em>
+</p>
+
+Observamos que algunas variables tienen una correlación bastante débil con la variable objetivo *quality_ord*. Establecemos un valor umbral de correlación de |0.1| y eliminamos todas las variables cuya correlación con *quality_ord* no supere este umbral. También identificamos que las variables *fixed_acidity* y *citric_acid* presentan una correlación de 0.67 entre ellas. Dado que están altamente correlacionadas y ambas llevan inormación relacionada con la acidez del vino, podemos conservar solo una de estas dos variables sin perder información explicativa en relación con *quality*. Para tomar esta decisión, comparamos la correlación de cada una con la variable objetivo y seleccionamos la que tenga el nivel de correlación más alto. En este caso, la variable *citric_acid* obtuvo el valor más alto, que es 0.23. Por lo tanto, eliminamos *fixed_acidity* y obtenemos una nueva matriz de correlación:
+
+<p align="center">
+   <img src="https://github.com/guillermovc/MCD_ICD_WineQuality/assets/90294947/9052b675-2f05-40d1-b16b-edd59d91bb5c" alt="Descripción de la imagen">
+</p>
+
+<p align="center">
+  <em>Figura 9: Matriz de correlación sin variables pobremente correlacionadas con quality, ni altamente correlacionadas entre sí.</em>
 </p>
 
 Luego, procedemos a analizar nuevamente la dispersión de las variables en nuestro nuevo conjunto de datos:
 
 <p align="center">
-   <img src="https://github.com/guillermovc/MCD_ICD_WineQuality/assets/90294947/0fdfb234-6daf-45f2-aaf3-bd96b7fbce25" alt="Descripción de la imagen">
+   <img src="https://github.com/guillermovc/MCD_ICD_WineQuality/assets/90294947/de365146-b9ab-4d56-8d26-b9297277a48a" alt="Descripción de la imagen">
 </p>
 
 <p align="center">
-  <em>Figura 9: Boxplots de nuestras características filtradas para los vinos de las distintas calidades.</em>
+  <em>Figura 10: Boxplots de nuestras características filtradas y transformadas.</em>
 </p>
 
 Observando estas gráficas podemos identificar claramente la presencia de valores atípicos o *outliers* en nuestros datos. Para su eliminación probamos dos algoritmos: *Isolation Forest* (IForest) y *Local Outlier Factor* (LOF). El IForest se basa en la idea de que los valores atípicos son raros y tienden a estar menos conectados con el resto de los datos. Trabaja construyendo un árbol de decisión de manera aleatoria y mide cuántos pasos se necesitan para aislar un punto. Los puntos que requieren menos pasos para aislarse se consideran valores atípicos. Por otro lado, el LOF se basa en la idea de que los valores atípicos tienen una densidad local significativamente menor en comparación con sus vecinos. Calcula un "Factor de Densidad Local" para cada punto de datos al comparar su densidad local con la densidad local de sus vecinos. Los puntos con un factor LOF significativamente mayor que 1 se consideran valores atípicos, lo que significa que tienen una densidad local más baja en comparación con sus vecinos. LOF es especialmente útil para identificar valores atípicos que pueden no ser obvios en un contexto global.
@@ -177,19 +202,17 @@ Los resultados de aplicar estos algoritmos fueron: 201 datos identificados como 
   <em>Figura 10: Boxplots de nuestras características filtradas antes y después de eliminar valores atípicos.</em>
 </p>
 
-Como último paso en nuestra fase de preparación de datos, abordamos la desigual distribución de las distintas calidades de vino en nuestro conjunto. Como se evidenció anteriormente, carecemos de observaciones de las calidades más extremas, es decir, 1, 2 y 9, y observamos una escasez de muestras para las calidades 3, 4 y 8. En contraste, la mayoría de las instancias se concentran en las calidades 5, 6 y 7.
 
-Para mitigar esta disparidad y mejorar la capacidad de generalización de nuestro modelo, optamos por crear tres nuevas categorías ordinales: "low" (baja calidad, que engloba las calidades 3 y 4), "med" (calidad media, que incluye las calidades 5 y 6) y "high" (alta calidad, que comprende las calidades 8 y 9). Si bien esta solución implica una disminución en la granularidad de nuestras predicciones al agrupar las calidades en estas tres categorías, contribuye a equilibrar las proporciones entre las distintas calidades en nuestros datos.
 
-<p align="center">
-   <img src="https://github.com/guillermovc/MCD_ICD_WineQuality/assets/90294947/3e53134c-7b86-4be5-a95f-6fee30085d09" alt="Descripción de la imagen">
-</p>
 
-<p align="center">
-  <em>Figura 11: Frecuencia de cada nueva categoría de calidad de vino.</em>
-</p>
 
-Este enfoque nos permitirá abordar de manera más efectiva el reto de modelar la calidad del vino y ofrecerá una mayor estabilidad en las predicciones al considerar estas categorías amplias en lugar de calidades individuales.
+
+
+
+
+
+
+
 
 Con nuestros datos preparados, tras haber eliminado variables poco relevantes,  valores atípicos y tras haber transformado nuestro datos, estamos listos para ingresar a la fase de modelado. En la próxima etapa, desarrollaremos y evaluaremos modelos para comprender la calidad del vino tinto y sus predictores clave. Exploraremos diversas técnicas de modelado en busca de las más efectivas en la predicción de la calidad del vino.
 
