@@ -164,7 +164,21 @@ Los resultados de aplicar estos algoritmos fueron: 201 datos identificados como 
   <em>Figura 10: Boxplots de nuestras características filtradas antes y después de eliminar valores atípicos</em>
 </p>
 
-Con nuestros datos preparados, habiendo eliminado valores atípicos y variables poco relevantes, estamos listos para adentrarnos en la fase de modelado. En la siguiente etapa, desarrollaremos y evaluaremos modelos para comprender la calidad del vino tinto y sus predictores clave. Exploraremos diversas técnicas de modelado en busca de las más efectivas en la predicción de la calidad del vino.
+Como último paso en nuestra fase de preparación de datos, abordamos la desigual distribución de las distintas calidades de vino en nuestro conjunto. Como se evidenció anteriormente, carecemos de observaciones de las calidades más extremas, es decir, 1, 2 y 9, y observamos una escasez de muestras para las calidades 3, 4 y 8. En contraste, la mayoría de las instancias se concentran en las calidades 5, 6 y 7.
+
+Para mitigar esta disparidad y mejorar la capacidad de generalización de nuestro modelo, optamos por crear tres nuevas categorías ordinales: "low" (baja calidad, que engloba las calidades 3 y 4), "med" (calidad media, que incluye las calidades 5 y 6) y "high" (alta calidad, que comprende las calidades 8 y 9). Si bien esta solución implica una disminución en la granularidad de nuestras predicciones al agrupar las calidades en estas tres categorías, contribuye a equilibrar las proporciones entre las distintas calidades en nuestros datos.
+
+<p align="center">
+   <img src="https://github.com/guillermovc/MCD_ICD_WineQuality/assets/90294947/3e53134c-7b86-4be5-a95f-6fee30085d09" alt="Descripción de la imagen">
+</p>
+
+<p align="center">
+  <em>Figura 11: Frecuencia de cada nueva categoría de calidad de vino</em>
+</p>
+
+Este enfoque nos permitirá abordar de manera más efectiva el reto de modelar la calidad del vino y ofrecerá una mayor estabilidad en las predicciones al considerar estas categorías amplias en lugar de calidades individuales.
+
+Con nuestros datos preparados, tras haber eliminado variables poco relevantes,  valores atípicos y tras haber transformado nuestro datos, estamos listos para ingresar a la fase de modelado. En la próxima etapa, desarrollaremos y evaluaremos modelos para comprender la calidad del vino tinto y sus predictores clave. Exploraremos diversas técnicas de modelado en busca de las más efectivas en la predicción de la calidad del vino.
 
 ### Modelado 
 
