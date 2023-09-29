@@ -85,6 +85,15 @@ Dado que los sabores rojo y blanco son bastante diferentes, el análisis se real
 </p>
 
 
+
+<p align="center">
+   <img src="https://github.com/guillermovc/MCD_ICD_WineQuality/assets/90294947/fb4f3395-6dfd-421b-b4cc-b6876e1def8e" alt="Descripción de la imagen">
+</p>
+
+<p align="center">
+  <em>Figura 4: Boxplots con los valores de cada una de las características para los vinos de las distintas calidades</em>
+</p>
+
 ### Modelado 
 
 ### Evaluación
