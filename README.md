@@ -28,7 +28,7 @@ CRISP-DM sigue siendo una metodología estándar en proyectos de minería de dat
 </p>
 
 <p align="center">
-  <em>Figura 1: Metodología CRISP-DM</em>
+  <em>Figura 1: Metodología CRISP-DM. Imagen tomada de Plotnikova et al., 2022.</em>
 </p>
 
 ### Comprensión del negocio 
@@ -48,7 +48,7 @@ La relevancia de este proyecto en el contexto de Portugal se manifiesta en su po
 </p>
 
 <p align="center">
-  <em>Figura 2: Publicidad de Vinho Verde tomada de: https://winefolly.com/deep-dive/vinho-verde-the-perfect-poolside-wine-from-portugal/</em>
+  <em>Figura 2: Publicidad de Vinho Verde. Imagen tomada de Puckette, 2019.</em>
 </p>
 
 ### Comprensión de los datos
@@ -81,7 +81,7 @@ Primero, verificamos que nuestros datos estén completos y no contengan valores 
 </p>
 
 <p align="center">
-  <em>Figura 3: Análisis de valores perdidos por característica</em>
+  <em>Figura 3: Análisis de valores perdidos por característica.</em>
 </p>
 
 A continuación, evaluamos la distribución de las calidades del vino en el conjunto de datos.
@@ -91,7 +91,7 @@ A continuación, evaluamos la distribución de las calidades del vino en el conj
 </p>
 
 <p align="center">
-  <em>Figura 4: Frecuencia de cada calidad de vino</em>
+  <em>Figura 4: Frecuencia de cada calidad de vino.</em>
 </p>
 
 Tal como se mencionó anteriormente, se observa que la presencia de valores extremos es mínima, con una mayor abundancia de vinos de calidad intermedia.
@@ -103,7 +103,7 @@ Posteriormente, analizamos la dispersión de las características para diferente
 </p>
 
 <p align="center">
-  <em>Figura 5: Boxplots con los valores de cada una de las características para los vinos de las distintas calidades</em>
+  <em>Figura 5: Boxplots con los valores de cada una de las características para los vinos de las distintas calidades.</em>
 </p>
 
 Finalmente, obtenemos la matriz de correlación para comprender mejor las relaciones entre las características.
@@ -113,7 +113,7 @@ Finalmente, obtenemos la matriz de correlación para comprender mejor las relaci
 </p>
 
 <p align="center">
-  <em>Figura 6: Matriz de correlación</em>
+  <em>Figura 6: Matriz de correlación.</em>
 </p>
 
 Este análisis inicial es el punto de partida esencial para la preparación de los datos. Proporciona una visión general de nuestros datos de vino tinto, ayudándonos a comprender su estructura y a identificar tendencias clave. Esta comprensión previa es crucial antes de abordar la limpieza y transformación de los datos en la siguiente etapa del proyecto.
@@ -129,7 +129,7 @@ Para esta preparación de datos, comenzamos por analizar la matriz de correlaci�
 </p>
 
 <p align="center">
-  <em>Figura 7: Matriz de correlación sin variables pobremente correlacionadas con quality</em>
+  <em>Figura 7: Matriz de correlación sin variables pobremente correlacionadas con quality.</em>
 </p>
 
 También identificamos que las variables *fixed_acidity*, *citric_acid* y *density* presentan una correlación de 0.67 entre ellas. Dado que están altamente correlacionadas, podemos conservar solo una de estas tres variables sin perder información explicativa en relación con *quality*. Para tomar esta decisión, comparamos la correlación de cada una con la variable objetivo y seleccionamos la que tenga el nivel de correlación más alto. En este caso, la variable *citric_acid* obtuvo el valor más alto, que es 0.23. Por lo tanto, eliminamos las otras dos variables y obtenemos una nueva matriz de correlación, como se muestra a continuación:
@@ -139,7 +139,7 @@ También identificamos que las variables *fixed_acidity*, *citric_acid* y *densi
 </p>
 
 <p align="center">
-  <em>Figura 8: Matriz de correlación sin variables pobremente correlacionadas con quality, ni altamente correlacionadas entre sí</em>
+  <em>Figura 8: Matriz de correlación sin variables pobremente correlacionadas con quality, ni altamente correlacionadas entre sí.</em>
 </p>
 
 Luego, procedemos a analizar nuevamente la dispersión de las variables en nuestro nuevo conjunto de datos:
@@ -149,7 +149,7 @@ Luego, procedemos a analizar nuevamente la dispersión de las variables en nuest
 </p>
 
 <p align="center">
-  <em>Figura 9: Boxplots de nuestras características filtradas para los vinos de las distintas calidades</em>
+  <em>Figura 9: Boxplots de nuestras características filtradas para los vinos de las distintas calidades.</em>
 </p>
 
 Observando estas gráficas podemos identificar claramente la presencia de valores atípicos o *outliers* en nuestros datos. Para su eliminación probamos dos algoritmos: *Isolation Forest* (IForest) y *Local Outlier Factor* (LOF). El IForest se basa en la idea de que los valores atípicos son raros y tienden a estar menos conectados con el resto de los datos. Trabaja construyendo un árbol de decisión de manera aleatoria y mide cuántos pasos se necesitan para aislar un punto. Los puntos que requieren menos pasos para aislarse se consideran valores atípicos. Por otro lado, el LOF se basa en la idea de que los valores atípicos tienen una densidad local significativamente menor en comparación con sus vecinos. Calcula un "Factor de Densidad Local" para cada punto de datos al comparar su densidad local con la densidad local de sus vecinos. Los puntos con un factor LOF significativamente mayor que 1 se consideran valores atípicos, lo que significa que tienen una densidad local más baja en comparación con sus vecinos. LOF es especialmente útil para identificar valores atípicos que pueden no ser obvios en un contexto global.
@@ -161,7 +161,7 @@ Los resultados de aplicar estos algoritmos fueron: 201 datos identificados como 
 </p>
 
 <p align="center">
-  <em>Figura 10: Boxplots de nuestras características filtradas antes y después de eliminar valores atípicos</em>
+  <em>Figura 10: Boxplots de nuestras características filtradas antes y después de eliminar valores atípicos.</em>
 </p>
 
 Como último paso en nuestra fase de preparación de datos, abordamos la desigual distribución de las distintas calidades de vino en nuestro conjunto. Como se evidenció anteriormente, carecemos de observaciones de las calidades más extremas, es decir, 1, 2 y 9, y observamos una escasez de muestras para las calidades 3, 4 y 8. En contraste, la mayoría de las instancias se concentran en las calidades 5, 6 y 7.
@@ -173,7 +173,7 @@ Para mitigar esta disparidad y mejorar la capacidad de generalización de nuestr
 </p>
 
 <p align="center">
-  <em>Figura 11: Frecuencia de cada nueva categoría de calidad de vino</em>
+  <em>Figura 11: Frecuencia de cada nueva categoría de calidad de vino.</em>
 </p>
 
 Este enfoque nos permitirá abordar de manera más efectiva el reto de modelar la calidad del vino y ofrecerá una mayor estabilidad en las predicciones al considerar estas categorías amplias en lugar de calidades individuales.
@@ -186,6 +186,22 @@ Para abordar la tarea de predecir la calidad del vino, hemos seleccionado el mod
 
 Para llevar a cabo el entrenamiento de nuestro modelo, dividimos nuestros datos en dos conjuntos: uno de entrenamiento, que representa el 80% de los datos (1251 muestras), y otro de validación, que comprende el 20% restante (313 muestras). A continuación, aplicamos el método de validación cruzada de k iteraciones con k=5. En este proceso, el conjunto de entrenamiento se divide en cinco subconjuntos excluyentes. Luego, se realizan cinco iteraciones, en cada una de las cuales uno de estos subconjuntos se utiliza como conjunto de prueba, mientras que los cuatro restantes se utilizan como subconjuntos de entrenamiento. Esto nos permite evaluar el rendimiento del modelo en cinco configuraciones diferentes, obteniendo un promedio de precisión y error en el conjunto de entrenamiento. La validación cruzada de k iteraciones nos proporciona una evaluación más robusta y confiable de la capacidad de generalización de nuestro modelo.
 
+<p align="center">
+   <img src="https://github.com/guillermovc/MCD_ICD_WineQuality/assets/90294947/0e5d8fa1-f57e-41b6-9261-30a79aa3835c" alt="Descripción de la imagen">
+</p>
+
+<p align="center">
+  <em>Figura 12: Proceso de entrenamiento y validación del modelo. Imagen tomada de Caughlin, 2020.</em>
+</p>
+
+<p align="center">
+   <img src="https://github.com/guillermovc/MCD_ICD_WineQuality/assets/90294947/5ef4ce1f-fd42-45fb-9e42-6abfc9451c22" alt="Descripción de la imagen">
+</p>
+
+<p align="center">
+  <em>Figura 13: Validación cruzada con K iteraciones. Imagen tomada de Shen, 2020.</em>
+</p>
+
 ### Evaluación
 
 Una vez que el modelo Random Forest se ha entrenado, lo evaluamos utilizando el conjunto de validación. El objetivo es que el modelo haga predicciones sobre la calidad de los vinos basadas en lo que ha aprendido durante el entrenamiento. Estas predicciones son omparadas con los valores reales de calidad en el conjunto de validación. Esta comparación permite medir qué tan preciso es el modelo en un entorno de datos no visto previamente y evaluar su rendimiento. Las métricas resultantes nos indican qué tan bien está haciendo el modelo en la tarea de predicción de calidad del vino. 
@@ -194,12 +210,14 @@ Una vez que el modelo Random Forest se ha entrenado, lo evaluamos utilizando el 
 
 ## Referencias
 
+- Caughlin, D. (2020). k-Fold Cross-Validation [Video]. YouTube. https://www.youtube.com/watch?app=desktop&v=kituDjzXwfE
 - Cortez, P., Cerdeira, A., Almeida, F., Matos, T., & Reis, J. (2009). Modeling wine preferences by data mining from physicochemical properties. Decision Support Systems, 47(4), 547-553. https://doi.org/10.1016/j.dss.2009.05.016
 - Laura-Ochoa, L. (2019). Evaluación de Algoritmos de Clasificación utilizando Validación Cruzada. Proceedings of the 17th LACCEI International Multi-Conference for Engineering, Education, and Technology: “Industry, Innovation, and Infrastructure for Sustainable Cities and Communities”. The 17th LACCEI International Multi-Conference for Engineering, Education, and Technology: “Industry, Innovation, and Infrastructure for Sustainable Cities and Communities”. https://doi.org/10.18687/LACCEI2019.1.1.471
+- Puckette, M. (2019). Beginner’s Guide To Vinho Verde Wine. Wine Folly. https://winefolly.com/deep-dive/vinho-verde-the-perfect-poolside-wine-from-portugal/
 - Parmar, A., Katariya, R., & Patel, V. (2019). A Review on Random Forest: An Ensemble Classifier. En J. Hemanth, X. Fernando, P. Lafata, & Z. Baig (Eds.), International Conference on Intelligent Data Communication Technologies and Internet of Things (ICICI) 2018 (Vol. 26, pp. 758-763). Springer International Publishing. https://doi.org/10.1007/978-3-030-03146-6_86
 - Plotnikova, V., Dumas, M., & Milani, F. P. (2022). Applying the CRISP-DM data mining process in the financial services industry: Elicitation of adaptation requirements. Data & Knowledge Engineering, 139, 102013. https://doi.org/10.1016/j.datak.2022.102013
 - Schröer, C., Kruse, F., & Gómez, J. M. (2021). A Systematic Literature Review on Applying CRISP-DM Process Model. Procedia Computer Science, 181, 526-534. https://doi.org/10.1016/j.procs.2021.01.199
-
+- Shen, Z. (2020). 3 min de Machine Learning: Cross Vaildation. Zitao's Web. https://zitaoshen.rbind.io/project/machine_learning/machine-learning-101-cross-vaildation/
 
 
 
