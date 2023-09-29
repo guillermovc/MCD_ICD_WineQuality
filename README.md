@@ -183,36 +183,24 @@ Observamos que algunas variables tienen una correlación bastante débil con la 
 Luego, procedemos a analizar nuevamente la dispersión de las variables en nuestro nuevo conjunto de datos:
 
 <p align="center">
-   <img src="https://github.com/guillermovc/MCD_ICD_WineQuality/assets/90294947/de365146-b9ab-4d56-8d26-b9297277a48a" alt="Descripción de la imagen">
+   <img src="https://github.com/guillermovc/MCD_ICD_WineQuality/assets/90294947/861132ac-b74a-41eb-8885-41bd50d5caeb" alt="Descripción de la imagen">
 </p>
 
 <p align="center">
   <em>Figura 10: Boxplots de nuestras características filtradas y transformadas.</em>
 </p>
 
-Observando estas gráficas podemos identificar claramente la presencia de valores atípicos o *outliers* en nuestros datos. Para su eliminación probamos dos algoritmos: *Isolation Forest* (IForest) y *Local Outlier Factor* (LOF). El IForest se basa en la idea de que los valores atípicos son raros y tienden a estar menos conectados con el resto de los datos. Trabaja construyendo un árbol de decisión de manera aleatoria y mide cuántos pasos se necesitan para aislar un punto. Los puntos que requieren menos pasos para aislarse se consideran valores atípicos. Por otro lado, el LOF se basa en la idea de que los valores atípicos tienen una densidad local significativamente menor en comparación con sus vecinos. Calcula un "Factor de Densidad Local" para cada punto de datos al comparar su densidad local con la densidad local de sus vecinos. Los puntos con un factor LOF significativamente mayor que 1 se consideran valores atípicos, lo que significa que tienen una densidad local más baja en comparación con sus vecinos. LOF es especialmente útil para identificar valores atípicos que pueden no ser obvios en un contexto global.
+Observando estas gráficas podemos identificar claramente la presencia de valores atípicos u *outliers* en nuestros datos. Para su eliminación probamos el algoritmo *Local Outlier Factor* (LOF). El LOF se basa en la idea de que los valores atípicos tienen una densidad local significativamente menor en comparación con sus vecinos. Este algoritmo calcula un "Factor de Densidad Local" para cada punto de datos al comparar su densidad local con la densidad local de sus vecinos. Los puntos con un factor LOF significativamente mayor que 1 se consideran valores atípicos, lo que significa que tienen una densidad local más baja en comparación con sus vecinos. LOF es especialmente útil para identificar valores atípicos que pueden no ser obvios en un contexto global.
 
-Los resultados de aplicar estos algoritmos fueron: 201 datos identificados como *outliers* por IForest y 35 por LOF. Debido a que Iforest clasificó como valores atípicos una gran cantidad de nuestros datos (más del 10%), optamos por la aplicación de LOF. A continuación se presenta la distribución de nuestras variables antes y después de la eliminación de los valores *outlier*.
+El resultado de aplicar este algoritmo fue que 56 observaciones fueron identificadas como *outliers*. A continuación se presenta la distribución de nuestras variables antes y después de la eliminación de estos valores atípicos:
 
 <p align="center">
-   <img src="https://github.com/guillermovc/MCD_ICD_WineQuality/assets/90294947/1fd2f42f-9711-47eb-98f7-b7b965f583be" alt="Descripción de la imagen">
+   <img src="https://github.com/guillermovc/MCD_ICD_WineQuality/assets/90294947/50ea391b-4525-4ecc-b08e-1f82d4e67b0d" alt="Descripción de la imagen">
 </p>
 
 <p align="center">
   <em>Figura 10: Boxplots de nuestras características filtradas antes y después de eliminar valores atípicos.</em>
 </p>
-
-
-
-
-
-
-
-
-
-
-
-
 
 Con nuestros datos preparados, tras haber eliminado variables poco relevantes,  valores atípicos y tras haber transformado nuestro datos, estamos listos para ingresar a la fase de modelado. En la próxima etapa, desarrollaremos y evaluaremos modelos para comprender la calidad del vino tinto y sus predictores clave. Exploraremos diversas técnicas de modelado en busca de las más efectivas en la predicción de la calidad del vino.
 
