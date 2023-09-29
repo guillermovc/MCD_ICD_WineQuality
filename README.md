@@ -182,13 +182,21 @@ Con nuestros datos preparados, tras haber eliminado variables poco relevantes,  
 
 ### Modelado 
 
+Para abordar la tarea de predecir la calidad del vino, hemos seleccionado el modelo de *Random Forest*. Este método es una técnica de ensamblaje que combina múltiples árboles de decisión independientes. Cada árbol es entrenado en un subconjunto aleatorio de los datos y utiliza una selección aleatoria de características. Cuando se realiza una predicción, cada árbol emite su propia clasificación y, finalmente, la clase más votada se convierte en la predicción del modelo. Esta estrategia de voto mayoritario y aleatorización en la selección de datos y características mejora significativamente la precisión y la capacidad de generalización del modelo.
+
+Para llevar a cabo el entrenamiento de nuestro modelo, dividimos nuestros datos en dos conjuntos: uno de entrenamiento, que representa el 80% de los datos (1251 muestras), y otro de validación, que comprende el 20% restante (313 muestras). A continuación, aplicamos el método de validación cruzada de k iteraciones con k=5. En este proceso, el conjunto de entrenamiento se divide en cinco subconjuntos excluyentes. Luego, se realizan cinco iteraciones, en cada una de las cuales uno de estos subconjuntos se utiliza como conjunto de prueba, mientras que los cuatro restantes se utilizan como subconjuntos de entrenamiento. Esto nos permite evaluar el rendimiento del modelo en cinco configuraciones diferentes, obteniendo un promedio de precisión y error en el conjunto de entrenamiento. La validación cruzada de k iteraciones nos proporciona una evaluación más robusta y confiable de la capacidad de generalización de nuestro modelo.
+
 ### Evaluación
+
+Una vez que el modelo Random Forest se ha entrenado, lo evaluamos utilizando el conjunto de validación. El objetivo es que el modelo haga predicciones sobre la calidad de los vinos basadas en lo que ha aprendido durante el entrenamiento. Estas predicciones son omparadas con los valores reales de calidad en el conjunto de validación. Esta comparación permite medir qué tan preciso es el modelo en un entorno de datos no visto previamente y evaluar su rendimiento. Las métricas resultantes nos indican qué tan bien está haciendo el modelo en la tarea de predicción de calidad del vino. 
 
 ### Implantación
 
 ## Referencias
 
 - Cortez, P., Cerdeira, A., Almeida, F., Matos, T., & Reis, J. (2009). Modeling wine preferences by data mining from physicochemical properties. Decision Support Systems, 47(4), 547-553. https://doi.org/10.1016/j.dss.2009.05.016
+- Laura-Ochoa, L. (2019). Evaluación de Algoritmos de Clasificación utilizando Validación Cruzada. Proceedings of the 17th LACCEI International Multi-Conference for Engineering, Education, and Technology: “Industry, Innovation, and Infrastructure for Sustainable Cities and Communities”. The 17th LACCEI International Multi-Conference for Engineering, Education, and Technology: “Industry, Innovation, and Infrastructure for Sustainable Cities and Communities”. https://doi.org/10.18687/LACCEI2019.1.1.471
+- Parmar, A., Katariya, R., & Patel, V. (2019). A Review on Random Forest: An Ensemble Classifier. En J. Hemanth, X. Fernando, P. Lafata, & Z. Baig (Eds.), International Conference on Intelligent Data Communication Technologies and Internet of Things (ICICI) 2018 (Vol. 26, pp. 758-763). Springer International Publishing. https://doi.org/10.1007/978-3-030-03146-6_86
 - Plotnikova, V., Dumas, M., & Milani, F. P. (2022). Applying the CRISP-DM data mining process in the financial services industry: Elicitation of adaptation requirements. Data & Knowledge Engineering, 139, 102013. https://doi.org/10.1016/j.datak.2022.102013
 - Schröer, C., Kruse, F., & Gómez, J. M. (2021). A Systematic Literature Review on Applying CRISP-DM Process Model. Procedia Computer Science, 181, 526-534. https://doi.org/10.1016/j.procs.2021.01.199
 
