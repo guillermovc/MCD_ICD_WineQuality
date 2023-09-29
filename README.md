@@ -150,7 +150,24 @@ Volvemos a analizar la dispersión de las distintas variables de nuestro nuevo c
   <em>Figura 9: Boxplots de nuestras características filtradas para los vinos de las distintas calidades</em>
 </p>
 
-Podemos identificar la presencia de *outliers* en nuestros datos. Para su identificación y posterior eliminación, utilizamos dos algoritmos: *Isolation Forest* (IForest) y *Local Outlier Factor* (LOF). El IForest se basa en la idea de que los valores atípicos son raros y tienden a estar menos conectados con el resto de los datos. Trabaja construyendo un árbol de decisión de manera aleatoria y mide cuántos pasos se necesitan para aislar un punto. Los puntos que requieren menos pasos para aislarse se consideran valores atípicos. Por otro lado, el LOF se basa en la idea de que los valores atípicos tienen una densidad local significativamente menor en comparación con sus vecinos. Calcula un "Factor de Densidad Local" para cada punto de datos al comparar su densidad local con la densidad local de sus vecinos. Los puntos con un factor LOF significativamente mayor que 1 se consideran valores atípicos, lo que significa que tienen una densidad local más baja en comparación con sus vecinos. LOF es especialmente útil para identificar valores atípicos que pueden no ser obvios en un contexto global.
+Observando estas gráficas podemos identificar claramente la presencia de valores atípicos o *outliers* en nuestros datos. Para su eliminación probamos dos algoritmos: *Isolation Forest* (IForest) y *Local Outlier Factor* (LOF). El IForest se basa en la idea de que los valores atípicos son raros y tienden a estar menos conectados con el resto de los datos. Trabaja construyendo un árbol de decisión de manera aleatoria y mide cuántos pasos se necesitan para aislar un punto. Los puntos que requieren menos pasos para aislarse se consideran valores atípicos. Por otro lado, el LOF se basa en la idea de que los valores atípicos tienen una densidad local significativamente menor en comparación con sus vecinos. Calcula un "Factor de Densidad Local" para cada punto de datos al comparar su densidad local con la densidad local de sus vecinos. Los puntos con un factor LOF significativamente mayor que 1 se consideran valores atípicos, lo que significa que tienen una densidad local más baja en comparación con sus vecinos. LOF es especialmente útil para identificar valores atípicos que pueden no ser obvios en un contexto global.
+
+Los resultados de aplicar estos algoritmos fueron: 201 datos identificados como *outliers* por IForest y 35 por LOF. Debido a que Iforest clasificó como valores atípicos una gran cantidad de nuestros datos (más del 10%), optamos por la aplicación de LOF. A continuación se presenta la distribución de nuestras variables antes y después de la eliminación de los valores *outlier*.
+
+<p align="center">
+   <img src="https://github.com/guillermovc/MCD_ICD_WineQuality/assets/90294947/1fd2f42f-9711-47eb-98f7-b7b965f583be" alt="Descripción de la imagen">
+</p>
+
+<p align="center">
+  <em>Figura 10: Boxplots de nuestras características filtradas antes y después de eliminar valores atípicos</em>
+</p>
+
+
+
+
+
+
+
 
 
 
