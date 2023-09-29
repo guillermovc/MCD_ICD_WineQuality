@@ -72,11 +72,9 @@ Para este proyecto los datos se obtuvieron del siguiente [enlace](https://archiv
 | alcohol                 | Característica | Continua  | Porcentaje de alcohol en el vino.                                        | No                |
 | quality                 | Objetivo        | Entero    | Puntuación de calidad del vino, promedio de evaluaciones sensoriales en una escala de 0 a 10. | No                |
 
-### Preparación de los datos
+Antes de continuar con la comprensión de nuestros datos, es pertinente aclarar que los sabores tinto y blanco son bastante diferentes, y por lo tanto el análisis se realizará por separado. Con esto en mente, se construyeron dos conjuntos de datos: uno con 1599 ejemplos tintos y otro con 4898 blancos. Por simplificación, los pasos presentados a partir de este punto correponden únicamente al conjunto de datos de vino tinto. 
 
-Dado que los sabores tinto y blanco son bastante diferentes, el análisis se realizará por separado, por lo que se construyeron dos conjuntos de datos: uno con 1599 ejemplos tintos y otro 4898 blancos. Por simplificación, los pasos presentados a partir de este punto correponden únicamente al conjunto de datos de vino tinto. 
-
-Como primer paso en la preparación de nuestros datos, corroboramos la ausencia de valores perdidos. 
+Corroboramos que en efecto nuestros datos no presenten valores perdidos. 
 
 <p align="center">
    <img src="https://github.com/guillermovc/MCD_ICD_WineQuality/assets/90294947/efc2cffb-5a8c-4cd7-b4c4-84507dbfac21" alt="Descripción de la imagen">
@@ -86,7 +84,7 @@ Como primer paso en la preparación de nuestros datos, corroboramos la ausencia 
   <em>Figura 3: Análisis de valores perdidos por característica</em>
 </p>
 
-Confirmado esto, procedemos a evaluar la proporción con la que aparecen los vinos de las distintas calidades. 
+Evaluamos la proporción con la que aparecen los vinos de las distintas calidades.
 
 <p align="center">
    <img src="https://github.com/guillermovc/MCD_ICD_WineQuality/assets/90294947/d6f4bba2-3d25-473b-908c-f19c836d25ed" alt="Descripción de la imagen">
@@ -96,7 +94,9 @@ Confirmado esto, procedemos a evaluar la proporción con la que aparecen los vin
   <em>Figura 4: Frecuencia de cada calidad de vino</em>
 </p>
 
-Tal como se mencionó anteriormente, la presencia de los valores extremos de calidad es casi nula. En contraste, la mayor abundacia se encuentra en los valores de calidad intermedia.  
+Tal como se mencionó anteriormente, la presencia de valores extremos es casi nula, mientras que la mayor abundacia se encuentra en los valores de calidad intermedia.
+
+Para cada una de las distinta calidades, analizamos la dispersión de cada una de las variables de nuestros datos. 
 
 <p align="center">
    <img src="https://github.com/guillermovc/MCD_ICD_WineQuality/assets/90294947/fb4f3395-6dfd-421b-b4cc-b6876e1def8e" alt="Descripción de la imagen">
@@ -106,7 +106,39 @@ Tal como se mencionó anteriormente, la presencia de los valores extremos de cal
   <em>Figura 5: Boxplots con los valores de cada una de las características para los vinos de las distintas calidades</em>
 </p>
 
-Aplicamos la eliminación de outliers empleando del criterio del rango intercuartílico. Este criterio consiste en eliminar todo valor que se encuentre a una distancia de la mediana mayor a 1.5 veces el rango intercuartílico. 
+Obtenemos la matriz de correlación de nuestros datos. 
+
+<p align="center">
+   <img src="https://github.com/guillermovc/MCD_ICD_WineQuality/assets/90294947/88bd843f-0a99-4ecb-a93d-d43fcde7ea43)" alt="Descripción de la imagen">
+</p>
+
+<p align="center">
+  <em>Figura 6: Matriz de correlación</em>
+</p>
+
+### Preparación de los datos  
+
+Tras haber ahondado en analizar el estado actual de nuestros datos, procedemos con la preparación de los mismos. El objetivo de esta etapa en la metodología CRISP-DM es garantizar que los datos sean adecuados y estén en el formato correcto para su análisis posterior. Entre otras cosas, esto implica la limpieza de datos, la selección de variables relevantes y la transformación de datos según sea necesario. En esta fase suele abordarse la resolución de problemas relacionados con datos faltantes, que como vimos en la etapa anterior, en este caso no será necesario. La preparación de los datos sienta las bases para el modelado de datos y es esencial para obtener resultados precisos y significativos en cualquier proyecto de minería de datos. A continuación, describiremos los pasos específicos que seguimos para preparar nuestros datos de vinos en este proyecto.
+
+Al analizar la matriz de correlación obtenida en la fase anterior, notamos que existen variables cuya correlación con la variable objetivo es bastante pobre. Fijamos un valor umbral de correlación de |0.1| y nos deshacemos de todas aquellas variables cuya correlación con *quality* no supere este umbral. Obtenemos la nueva matriz de correlación.
+
+<p align="center">
+   <img src="https://github.com/guillermovc/MCD_ICD_WineQuality/assets/90294947/5d6abd55-833c-42f7-86de-de5f8f8fccf3" alt="Descripción de la imagen">
+</p>
+
+<p align="center">
+  <em>Figura 7: Matriz de correlación sin variables pobremente correlacionadas con quality</em>
+</p>
+
+Notamos que las varibales *fixed_acidity*, *citric_acid* y *density* presentan una correlación de 0.67 entre ellas. Al estar altamente correlacionadas, podemos quedarnos solo con una de estas tres variables sin riesgo de perder información explicativa con respecto a *quality*. Para decidir con qué variable nos quedaremos comparamos la correlación de cada una con la variable objetivo y nos quedamos con aquella que presente el mayor nivel de correlación. En este caso, valor 0.23 de *citric_acid* fue el más alto. Nos deshacemos de las otras dos variables y obtenemos nuestra nueva matriz de correlación.
+
+<p align="center">
+   <img src="https://github.com/guillermovc/MCD_ICD_WineQuality/assets/90294947/69520fb9-31be-44cf-afeb-e113c293b113" alt="Descripción de la imagen">
+</p>
+
+<p align="center">
+  <em>Figura 8: Matriz de correlación sin variables pobremente correlacionadas con quality, ni altamente correlacionadas entre sí</em>
+</p>
 
 ### Modelado 
 
