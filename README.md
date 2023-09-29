@@ -76,23 +76,37 @@ Para este proyecto los datos se obtuvieron del siguiente [enlace](https://archiv
 
 Dado que los sabores tinto y blanco son bastante diferentes, el análisis se realizará por separado, por lo que se construyeron dos conjuntos de datos: uno con 1599 ejemplos tintos y otro 4898 blancos. Por simplificación, los pasos presentados a partir de este punto correponden únicamente al conjunto de datos de vino tinto. 
 
+Como primer paso en la preparación de nuestros datos, corroboramos la ausencia de valores perdidos. 
+
+<p align="center">
+   <img src="https://github.com/guillermovc/MCD_ICD_WineQuality/assets/90294947/efc2cffb-5a8c-4cd7-b4c4-84507dbfac21" alt="Descripción de la imagen">
+</p>
+
+<p align="center">
+  <em>Figura 3: Análisis de valores perdidos por característica</em>
+</p>
+
+Confirmado esto, procedemos a evaluar la proporción con la que aparecen los vinos de las distintas calidades. 
+
 <p align="center">
    <img src="https://github.com/guillermovc/MCD_ICD_WineQuality/assets/90294947/d6f4bba2-3d25-473b-908c-f19c836d25ed" alt="Descripción de la imagen">
 </p>
 
 <p align="center">
-  <em>Figura 3: Frecuencia de cada calidad de vino</em>
+  <em>Figura 4: Frecuencia de cada calidad de vino</em>
 </p>
 
-
+Tal como se mencionó anteriormente, la presencia de los valores extremos de calidad es casi nula. En contraste, la mayor abundacia se encuentra en los valores de calidad intermedia.  
 
 <p align="center">
    <img src="https://github.com/guillermovc/MCD_ICD_WineQuality/assets/90294947/fb4f3395-6dfd-421b-b4cc-b6876e1def8e" alt="Descripción de la imagen">
 </p>
 
 <p align="center">
-  <em>Figura 4: Boxplots con los valores de cada una de las características para los vinos de las distintas calidades</em>
+  <em>Figura 5: Boxplots con los valores de cada una de las características para los vinos de las distintas calidades</em>
 </p>
+
+Aplicamos la eliminación de outliers empleando del criterio del rango intercuartílico. Este criterio consiste en eliminar todo valor que se encuentre a una distancia de la mediana mayor a 1.5 veces el rango intercuartílico. 
 
 ### Modelado 
 
