@@ -74,7 +74,7 @@ Para este proyecto los datos se obtuvieron del siguiente [enlace](https://archiv
 
 ### Preparación de los datos
 
-Dado que los sabores rojo y blanco son bastante diferentes, el análisis se realizará por separado, por lo que se construyeron dos conjuntos de datos 1 con 1599 ejemplos rojos y 4898 blancos.
+Dado que los sabores tinto y blanco son bastante diferentes, el análisis se realizará por separado, por lo que se construyeron dos conjuntos de datos: uno con 1599 ejemplos tintos y otro 4898 blancos. Por simplificación, los pasos presentados a partir de este punto correponden únicamente al conjunto de datos de vino tinto. 
 
 <p align="center">
    <img src="https://github.com/guillermovc/MCD_ICD_WineQuality/assets/90294947/d6f4bba2-3d25-473b-908c-f19c836d25ed" alt="Descripción de la imagen">
