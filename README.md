@@ -74,7 +74,7 @@ Para este proyecto los datos se obtuvieron del siguiente [enlace](https://archiv
 
 Antes de profundizar en el análisis de los datos, es importante destacar que se consideraron por separado los vinos tintos y blancos debido a sus diferencias en sabor y composición. Con esto en mente, se construyeron dos conjuntos de datos: uno con 1599 ejemplos tintos y otro con 4898 blancos. Por simplificación, los pasos presentados a partir de este punto correponden únicamente al conjunto de datos de vino tinto. 
 
-Primero, verificamos que nuestros datos estén completos y no contengan valores faltantes.
+Primero, verificamos que nuestros datos estén completos y no contengan valores faltantes:
 
 <p align="center">
    <img src="https://github.com/guillermovc/MCD_ICD_WineQuality/assets/90294947/efc2cffb-5a8c-4cd7-b4c4-84507dbfac21" alt="Descripción de la imagen">
@@ -84,7 +84,20 @@ Primero, verificamos que nuestros datos estén completos y no contengan valores 
   <em>Figura 3: Análisis de valores perdidos por característica.</em>
 </p>
 
-A continuación, evaluamos la distribución de las calidades del vino en el conjunto de datos.
+Como siguiente paso obtenemos los estadísticos básicos de cada variable en nuestros datos: 
+
+| index | fixed acidity | volatile acidity | citric acid | residual sugar | chlorides | free sulfur dioxide | total sulfur dioxide | density | pH  | sulphates | alcohol | quality |
+|-------|---------------|-------------------|-------------|----------------|-----------|--------------------|----------------------|---------|-----|-----------|---------|---------|
+| count | 1599.0        | 1599.0            | 1599.0      | 1599.0         | 1599.0    | 1599.0             | 1599.0               | 1599.0  | 1599.0 | 1599.0    | 1599.0  | 1599.0  |
+| mean  | 8.3196        | 0.5278            | 0.2710      | 2.5388         | 0.0875    | 15.8749            | 46.4678              | 0.9967  | 3.3111 | 0.6581    | 10.4230 | 5.6360  |
+| std   | 1.7411        | 0.1791            | 0.1948      | 1.4099         | 0.0471    | 10.4602            | 32.8953              | 0.0019  | 0.1544 | 0.1695    | 1.0657  | 0.8076  |
+| min   | 4.6           | 0.12              | 0.0         | 0.9            | 0.012     | 1.0                | 6.0                  | 0.9901  | 2.7400 | 0.3300    | 8.4     | 3.0     |
+| 25%   | 7.1           | 0.3900            | 0.0900      | 1.9            | 0.070     | 7.0                | 22.0                 | 0.9956  | 3.2100 | 0.5500    | 9.5     | 5.0     |
+| 50%   | 7.9           | 0.5200            | 0.2600      | 2.2            | 0.079     | 14.0               | 38.0                 | 0.9968  | 3.3100 | 0.6200    | 10.2    | 6.0     |
+| 75%   | 9.2           | 0.6400            | 0.4200      | 2.6            | 0.090     | 21.0               | 62.0                 | 0.9978  | 3.4000 | 0.7300    | 11.1    | 6.0     |
+| max   | 15.9          | 1.5800            | 1.0         | 15.5           | 0.611     | 72.0               | 289.0                | 1.0037  | 4.0100 | 2.0       | 14.9    | 8.0     
+
+A continuación, evaluamos la distribución de las calidades del vino en el conjunto de datos:
 
 <p align="center">
    <img src="https://github.com/guillermovc/MCD_ICD_WineQuality/assets/90294947/d6f4bba2-3d25-473b-908c-f19c836d25ed" alt="Descripción de la imagen">
@@ -96,7 +109,7 @@ A continuación, evaluamos la distribución de las calidades del vino en el conj
 
 Tal como se mencionó anteriormente, se observa que la presencia de valores extremos es mínima, con una mayor abundancia de vinos de calidad intermedia.
 
-Posteriormente, analizamos la dispersión de las características para diferentes calidades de vino.
+Posteriormente, analizamos la dispersión de las características para las distintas calidades de vino:
 
 <p align="center">
    <img src="https://github.com/guillermovc/MCD_ICD_WineQuality/assets/90294947/fb4f3395-6dfd-421b-b4cc-b6876e1def8e" alt="Descripción de la imagen">
@@ -106,7 +119,7 @@ Posteriormente, analizamos la dispersión de las características para diferente
   <em>Figura 5: Boxplots con los valores de cada una de las características para los vinos de las distintas calidades.</em>
 </p>
 
-Finalmente, obtenemos la matriz de correlación para comprender mejor las relaciones entre las características.
+Finalmente, obtenemos la matriz de correlación para comprender mejor las relaciones entre las características:
 
 <p align="center">
    <img src="https://github.com/guillermovc/MCD_ICD_WineQuality/assets/90294947/88bd843f-0a99-4ecb-a93d-d43fcde7ea43)" alt="Descripción de la imagen">
