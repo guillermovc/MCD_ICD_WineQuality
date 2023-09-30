@@ -236,7 +236,9 @@ En esta sección, evaluaremos el desempeño de nuestro modelo de Random Forest e
 | Real 0       |       1       |     122      |      5       |
 | Real 1       |       0       |     15       |      6       |
 
-La matriz de confusión se compone de tres partes principales: verdaderos positivos (VP), verdaderos negativos (VN), falsos positivos (FP) y falsos negativos (FN). Estos elementos nos ayudan a medir la capacidad del modelo para clasificar correctamente las muestras en diferentes categorías de calidad. Precisión, *recall* o sensibilidad y puntuación F1 son métricas clave que se derivan de la matriz de confusión y nos brindan información detallada sobre el rendimiento del modelo. 
+La matriz de confusión se compone de tres partes principales: verdaderos positivos (VP), verdaderos negativos (VN), falsos positivos (FP) y falsos negativos (FN). Estos elementos nos ayudan a medir la capacidad del modelo para clasificar correctamente las muestras en diferentes categorías de calidad. *Accuracy* o exactitud, precisión, *recall* o sensibilidad y puntuación F1 son métricas clave que se derivan de la matriz de confusión y nos brindan información detallada sobre el rendimiento del modelo. 
+
+- Exactitud (E): Mide la proporción de predicciones correctas realizadas por el modelo en relación con el total de predicciones. Es una métrica global que refleja la capacidad del modelo para clasificar correctamente todas las categorías. Una alta exactitud indica que el modelo tiene un buen rendimiento general en la clasificación de las muestras, independientemente de su etiqueta. Su ecuación es: $$E = \frac{VP + VN}{VP + VN + FP + FN}$$
 
 - Precisión (P): Mide la proporción de predicciones positivas realizadas por el modelo que fueron realmente correctas. Refleja la capacidad del modelo para no etiquetar incorrectamente ejemplos negativos como positivos. Una alta precisión indica que el modelo tiene una baja tasa de falsos positivos y, por lo tanto, es preciso en la clasificación de las muestras positivas. Su ecuación es: $$P = \frac{VP}{VP + FP}$$
 
