@@ -246,7 +246,7 @@ La matriz de confusión se compone de tres partes principales: verdaderos positi
 
 - Puntuación F1: Es una métrica que combina precisión y sensibilidad en un solo valor, permitiendo equilibrar la importancia de estas dos métricas. Es especialmente útil cuando las clases están desequilibradas en el conjunto de datos. La puntuación F1 alcanza su valor máximo de 1 cuando tanto la precisión como la sensibilidad son perfectas. Su ecuación es: $$F1 = \frac{2 \cdot (P \cdot S)}{P + S}$$
 
-El cálculo de estas métricas para cada una de las categorías de nuestro datos son: 
+En cuanto al cálculo de estas métricas para cada una de las categorías de nuestros datos, los resultados se detallan en la siguiente tabla:
 
 | Categoría  | Precisión | Sensibilidad |   F1   | Observaciones |
 |------------|-----------|--------------|--------|---------------|
@@ -254,7 +254,7 @@ El cálculo de estas métricas para cada una de las categorías de nuestro datos
 |      0     |   0.85    |     0.95     |  0.90  |      128      |
 |      1     |   0.55    |     0.29     |  0.37  |       21      |
 
-También se cálculo un promedio ponderado de estás métricas, el cuál toma en cuenta el desbalance que existe en la cantidad de datos de cada categoría: 
+Además, se calculó un promedio ponderado de estas métricas, que tiene en cuenta el desbalance existente en la cantidad de datos de cada categoría:
 
 |    Métrica   | Promedio ponderado |
 |--------------|-------|
@@ -262,9 +262,21 @@ También se cálculo un promedio ponderado de estás métricas, el cuál toma en
 | Sensibilidad | 0.83  | 
 |  F1 |  0.79  |        
 
-Por último, la métrica global de exactitud arrojo el valor de: 0.83
+Finalmente, la métrica global de exactitud arrojó un valor de 0.83, lo que indica la proporción de predicciones correctas en relación con el total de observaciones.
+
+Nuestro modelo muestra un rendimiento aceptable en la tarea de clasificación de calidad de vinos, con una exactitud global del 83%. Sin embargo, es esencial tener en cuenta la desigualdad en la cantidad de observaciones entre las categorías. En el caso de la calidad más baja (-1) y la calidad más alta (1), debido a su menor representación en el conjunto de datos, el modelo enfrenta desafíos para clasificar con precisión estas categorías. La precisión y la sensibilidad para estas categorías extremas son más bajas en comparación con la categoría intermedia (0).
+
+Para las categorías de calidad extremas, se observa que la métrica F1, que combina precisión y sensibilidad, tiene un valor más bajo. Esto indica que el modelo lucha por encontrar un equilibrio entre etiquetar correctamente los ejemplos de estas categorías y evitar falsos positivos. Dado que las categorías extremas son menos representadas en los datos, el modelo puede tener dificultades para aprender patrones significativos.
+
+Para futuros trabajos, es crucial abordar la desigualdad en la distribución de clases. Esto podría lograrse mediante la recopilación de más datos para las categorías menos representadas, el uso de técnicas de balanceo de clases o la exploración de algoritmos de clasificación que manejen mejor conjuntos de datos desequilibrados. Además, la selección cuidadosa de características y la optimización de hiperparámetros podrían contribuir a mejorar el rendimiento del modelo, especialmente en la clasificación de categorías extremas. 
 
 ### Implantación
+
+En la fase de implantación, consideramos cómo nuestros resultados pueden ser aplicados en un contexto empresarial. A pesar de ser un proyecto académico, sus hallazgos pueden tener un impacto significativo en la industria del vino y en otros sectores relacionados.
+
+La capacidad de predecir la calidad del vino con precisión a partir de sus características fisicoquímicas tiene el potencial de mejorar la toma de decisiones en la producción y comercialización de vinos. Las bodegas y productores pueden utilizar modelos similares para evaluar y optimizar sus procesos, lo que puede resultar en vinos de mayor calidad y una mejor respuesta a las necesidades cambiantes del mercado.
+
+Aunque nuestro enfoque se centró en datos obtenidos de la industria vinícola portuguesa, los principios y técnicas de minería de datos pueden aplicarse en diversas industrias para resolver problemas similares. Por lo tanto, estos resultados académicos pueden servir como punto de partida para futuras aplicaciones prácticas en el mundo empresarial, contribuyendo a la mejora de productos y procesos en un mercado global altamente competitivo.
 
 ## Referencias
 
@@ -276,22 +288,3 @@ Por último, la métrica global de exactitud arrojo el valor de: 0.83
 - Plotnikova, V., Dumas, M., & Milani, F. P. (2022). Applying the CRISP-DM data mining process in the financial services industry: Elicitation of adaptation requirements. Data & Knowledge Engineering, 139, 102013. https://doi.org/10.1016/j.datak.2022.102013
 - Schröer, C., Kruse, F., & Gómez, J. M. (2021). A Systematic Literature Review on Applying CRISP-DM Process Model. Procedia Computer Science, 181, 526-534. https://doi.org/10.1016/j.procs.2021.01.199
 - Shen, Z. (2020). 3 min de Machine Learning: Cross Vaildation. Zitao's Web. https://zitaoshen.rbind.io/project/machine_learning/machine-learning-101-cross-vaildation/
-
-
-
-
-
-
-
-# Proyecto
-- Contar que usaremos K-Fold
-- usando la metodología Crisp-DM
-- subconjuntos de entrenamiento, validación y prueba
-
-# Algo más que crean que debe ir en el `readme` o algun reordenamiento.
-
-# Docker
-Si gustan dejenme esta parte a mi (Guillermo).  
-Aquí explicaré como utilizar Docker para bajar un entorno listo en el que puedas correr la libreta jupyter con tu navegador.
-  
-**Vayan incluyendo librerias que usen y sepan que no son de la librería estandar en el archivo `requirements.txt`**
