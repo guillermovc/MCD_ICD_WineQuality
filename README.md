@@ -246,6 +246,24 @@ La matriz de confusión se compone de tres partes principales: verdaderos positi
 
 - Puntuación F1: Es una métrica que combina precisión y sensibilidad en un solo valor, permitiendo equilibrar la importancia de estas dos métricas. Es especialmente útil cuando las clases están desequilibradas en el conjunto de datos. La puntuación F1 alcanza su valor máximo de 1 cuando tanto la precisión como la sensibilidad son perfectas. Su ecuación es: $$F1 = \frac{2 \cdot (P \cdot S)}{P + S}$$
 
+El cálculo de estas métricas para cada una de las categorías de nuestro datos son: 
+
+| Categoría  | Precisión | Sensibilidad |   F1   | Observaciones |
+|------------|-----------|--------------|--------|---------------|
+|     -1     |   0.00    |     0.00     |  0.00  |       6       |
+|      0     |   0.85    |     0.95     |  0.90  |      128      |
+|      1     |   0.55    |     0.29     |  0.37  |       21      |
+
+También se cálculo un promedio ponderado de estás métricas, el cuál toma en cuenta el desbalance que existe en la cantidad de datos de cada categoría: 
+
+|    Métrica   | Promedio ponderado |
+|--------------|-------|
+|   Presición  | 0.78  |
+| Sensibilidad | 0.83  | 
+|  F1 |  0.79  |        
+
+Por último, la métrica global de exactitud arrojo el valor de: 0.83
+
 ### Implantación
 
 ## Referencias
