@@ -228,7 +228,21 @@ Para llevar a cabo el entrenamiento de nuestro modelo, dividimos nuestros datos 
 
 ### Evaluación
 
-Una vez que el modelo Random Forest se ha entrenado, lo evaluamos utilizando el conjunto de validación. El objetivo es que el modelo haga predicciones sobre la calidad de los vinos basadas en lo que ha aprendido durante el entrenamiento. Estas predicciones son omparadas con los valores reales de calidad en el conjunto de validación. Esta comparación permite medir qué tan preciso es el modelo en un entorno de datos no visto previamente y evaluar su rendimiento. Las métricas resultantes nos indican qué tan bien está haciendo el modelo en la tarea de predicción de calidad del vino. 
+En esta sección, evaluaremos el desempeño de nuestro modelo de Random Forest en la tarea de predecir la calidad del vino tinto. Para esto, utilizaremos una herramienta fundamental conocida como la "matriz de confusión". Esta matriz es una tabla que nos brinda información sobre el rendimiento de nuestro modelo al comparar sus predicciones con los valores reales del conjunto de validación. Cabe recordar que los valores asociados a cada categoría de calidad son: -1 (baja calidad, que engloba las calidades 3 y 4), 0 (calidad media, que incluye las calidades 5 y 6) y 1 (alta calidad, que comprende las calidades 8 y 9). 
+
+|              | Predicción -1 | Predicción 0 | Predicción 1 |
+|--------------|---------------|--------------|--------------|
+| Real -1      |       0       |      6       |      0       |
+| Real 0       |       1       |     122      |      5       |
+| Real 1       |       0       |     15       |      6       |
+
+La matriz de confusión se compone de tres partes principales: verdaderos positivos (VP), verdaderos negativos (VN), falsos positivos (FP) y falsos negativos (FN). Estos elementos nos ayudan a medir la capacidad del modelo para clasificar correctamente las muestras en diferentes categorías de calidad. Precisión, *recall* o sensibilidad y puntuación F1 son métricas clave que se derivan de la matriz de confusión y nos brindan información detallada sobre el rendimiento del modelo. 
+
+- Precisión (P): Mide la proporción de predicciones positivas realizadas por el modelo que fueron realmente correctas. Refleja la capacidad del modelo para no etiquetar incorrectamente ejemplos negativos como positivos. Una alta precisión indica que el modelo tiene una baja tasa de falsos positivos y, por lo tanto, es preciso en la clasificación de las muestras positivas. Su ecuación es: $$P = \frac{VP}{VP + FP}$$
+
+- Sensibilidad (S): Mide la proporción de ejemplos positivos reales que el modelo predijo correctamente. Refleja la capacidad del modelo para identificar con precisión todos los ejemplos positivos. Una alta sensibilidad indica que el modelo tiene una baja tasa de falsos negativos y es capaz de capturar la mayoría de las muestras positivas. Su ecuación es: $$S = \frac{VP}{VP + FN}$$
+
+- Puntuación F1: Es una métrica que combina precisión y sensibilidad en un solo valor, permitiendo equilibrar la importancia de estas dos métricas. Es especialmente útil cuando las clases están desequilibradas en el conjunto de datos. La puntuación F1 alcanza su valor máximo de 1 cuando tanto la precisión como la sensibilidad son perfectas. Su ecuación es: $$F1 = \frac{2 \cdot (P \cdot S)}{P + S}$$
 
 ### Implantación
 
